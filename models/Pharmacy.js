@@ -4,6 +4,7 @@ export default class Pharmacy {
   }
 
   updateBenefitValue() {
-    return this.drugs.map(drug => drug.updateForNextDay());
+    this.drugs = this.drugs.map(drug => drug.updateForNextDay());
+    return this.drugs;
   }
 }

@@ -128,4 +128,14 @@ describe("Pharmacy", () => {
       });
     });
   });
+
+  describe("Multiple days", () => {
+    it("should decrease twice", () => {
+      const pharmacy = new Pharmacy([new Drug("test", 2, 3)]);
+      for (let elapsedDays = 0; elapsedDays < 2; elapsedDays++) {
+        pharmacy.updateBenefitValue();
+      }
+      expect(pharmacy).toEqual(new Pharmacy([new Drug("test", 0, 1)]));
+    });
+  });
 });
