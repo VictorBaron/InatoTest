@@ -1,13 +1,13 @@
 import Pharmacy from "./models/Pharmacy";
-import DrugFactory from "./models/drugs/DrugFactory";
+import Drug from "./models/drugs/Drug";
 
 import fs from "fs";
 
 const drugs = [
-  new DrugFactory("Doliprane", 20, 30),
-  new DrugFactory("Herbal Tea", 10, 5),
-  new DrugFactory("Fervex", 5, 40),
-  new DrugFactory("Magic Pill", 15, 40)
+  new Drug("Doliprane", 20, 30),
+  new Drug("Herbal Tea", 10, 5),
+  new Drug("Fervex", 5, 40),
+  new Drug("Magic Pill", 15, 40)
 ];
 const trial = new Pharmacy(drugs);
 

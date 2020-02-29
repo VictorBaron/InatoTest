@@ -1,30 +1,23 @@
-import DrugFactory from "./DrugFactory";
-import Benefit from "./misc/Benefit";
+import ClassicDrug from "./ClassicDrug";
+import HerbalTea from "./HerbalTea";
+import MagicPill from "./MagicPill";
+import Fervex from "./Fervex";
+import Dafalgan from "./Dafalgan";
+import * as drugs from "./drugsList";
 
 export default class Drug {
-  constructor(name, expiresIn, benefit) {
-    this.name = name;
-    this.expiresIn = expiresIn;
-    this.benefit = new Benefit(benefit);
-  }
-
-  updateExpiresIn(expiresIn) {
-    return expiresIn - 1;
-  }
-
-  updateBenefitValue(benefit, expiresIn) {
-    if (expiresIn < 0) {
-      return benefit.add(-2);
+  constructor(name, ...args) {
+    switch (name) {
+      case drugs.HERBAL_TEA:
+        return new HerbalTea(name, ...args);
+      case drugs.MAGIC_PILL:
+        return new MagicPill(name, ...args);
+      case drugs.FERVEX:
+        return new Fervex(name, ...args);
+      case drugs.DAFALGAN:
+        return new Dafalgan(name, ...args);
+      default:
+        return new ClassicDrug(name, ...args);
     }
-    return benefit.add(-1);
-  }
-
-  updateForNextDay() {
-    const updatedExpiresIn = this.updateExpiresIn(this.expiresIn);
-    const updatedBenefit = this.updateBenefitValue(
-      this.benefit,
-      updatedExpiresIn
-    );
-    return new DrugFactory(this.name, updatedExpiresIn, updatedBenefit);
   }
 }

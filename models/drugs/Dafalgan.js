@@ -1,6 +1,6 @@
-import Drug from "./Drug";
+import ClassicDrug from "./ClassicDrug";
 
-export default class Dafalgan extends Drug {
+export default class Dafalgan extends ClassicDrug {
   updateBenefitValue(benefit, expiresIn) {
     if (expiresIn < 0) {
       return benefit.add(-4);

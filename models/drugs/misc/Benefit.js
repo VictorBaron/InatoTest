@@ -7,7 +7,8 @@ export default class Benefit {
     const newValue = this.value + addedValue;
     if (newValue > 50) {
       return 50;
-    } else if (newValue < 0) {
+    }
+    if (newValue < 0) {
       return 0;
     }
     return newValue;

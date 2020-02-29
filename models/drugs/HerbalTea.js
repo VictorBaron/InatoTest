@@ -1,6 +1,6 @@
-import Drug from "./Drug";
+import ClassicDrug from "./ClassicDrug";
 
-export default class HerbalTea extends Drug {
+export default class HerbalTea extends ClassicDrug {
   updateBenefitValue(benefit, expiresIn) {
     if (expiresIn < 0) {
       return benefit.add(2);

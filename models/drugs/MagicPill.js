@@ -1,6 +1,6 @@
-import Drug from "./Drug";
+import ClassicDrug from "./ClassicDrug";
 
-export default class MagicPill extends Drug {
+export default class MagicPill extends ClassicDrug {
   updateExpiresIn(expiresIn) {
     return expiresIn;
   }
