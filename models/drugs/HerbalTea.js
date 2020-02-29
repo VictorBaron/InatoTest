@@ -1,19 +1,14 @@
-import DrugFactory from "./DrugFactory";
+import Drug from "./Drug";
+import { HERBAL_TEA } from "./drugsList";
 
-export default class Drug {
+export default class HerbalTea extends Drug {
   constructor(name, expiresIn, benefit) {
-    this.name = name;
-    this.expiresIn = expiresIn;
-    this.benefit = benefit;
-  }
-
-  updateExpiresIn(expiresIn) {
-    return expiresIn - 1;
+    super(HERBAL_TEA, expiresIn, benefit);
   }
 
   updateBenefit(benefit) {
-    if (benefit > 0) {
-      return benefit - 1;
+    if (benefit < 50) {
+      return benefit + 1;
     }
     return benefit;
   }
@@ -25,6 +20,6 @@ export default class Drug {
       updatedBenefit = this.updateBenefit(updatedBenefit);
     }
 
-    return new DrugFactory(this.name, updatedExpiresIn, updatedBenefit);
+    return new HerbalTea(this.name, updatedExpiresIn, updatedBenefit);
   }
 }
