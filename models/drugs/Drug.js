@@ -6,12 +6,12 @@ export default class Drug {
   }
 
   decreaseExpiresIn(expiresIn) {
-    return --expiresIn;
+    return expiresIn - 1;
   }
 
   decreaseBenefit(benefit) {
     if (benefit > 0) {
-      return --benefit;
+      return benefit - 1;
     }
     return benefit;
   }
