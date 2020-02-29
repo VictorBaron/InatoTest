@@ -82,7 +82,7 @@ describe("Pharmacy", () => {
 
       it("should decrease expiresIn, benefit should not go over 50", () => {
         expect(
-          new Pharmacy([new Drug(drugs.FERVEX, 0, 49)]).updateBenefitValue()
+          new Pharmacy([new Drug(drugs.FERVEX, 2, 49)]).updateBenefitValue()
         ).toEqual([new Drug(drugs.FERVEX, 1, 50)]);
       });
     });
