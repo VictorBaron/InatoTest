@@ -11,21 +11,11 @@ export default class Fervex extends Drug {
       return 0;
     }
     if (expiresIn >= 10) {
-      benefit++;
+      return benefit.add(1);
     } else if (expiresIn >= 5) {
-      benefit = benefit + 2;
+      return benefit.add(2);
     } else {
-      benefit = benefit + 3;
+      return benefit.add(3);
     }
-
-    return benefit < 50 ? benefit : 50;
-  }
-
-  updateBenefitValue() {
-    const updatedExpiresIn = this.updateExpiresIn(this.expiresIn);
-
-    const updatedBenefit = this.updateBenefit(this.benefit, updatedExpiresIn);
-
-    return new Fervex(this.name, updatedExpiresIn, updatedBenefit);
   }
 }

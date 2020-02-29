@@ -6,7 +6,11 @@ export default class MagicPill extends Drug {
     super(MAGIC_PILL, expiresIn, benefit);
   }
 
-  updateBenefitValue() {
-    return this;
+  updateExpiresIn(expiresIn) {
+    return expiresIn;
+  }
+
+  updateBenefit(benefit) {
+    return benefit.value;
   }
 }

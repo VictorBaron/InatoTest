@@ -6,20 +6,10 @@ export default class HerbalTea extends Drug {
     super(HERBAL_TEA, expiresIn, benefit);
   }
 
-  updateBenefit(benefit) {
-    if (benefit < 50) {
-      return benefit + 1;
+  updateBenefit(benefit, expiresIn) {
+    if (expiresIn < 0) {
+      return benefit.add(2);
     }
-    return benefit;
-  }
-
-  updateBenefitValue() {
-    const updatedExpiresIn = this.updateExpiresIn(this.expiresIn);
-    let updatedBenefit = this.updateBenefit(this.benefit);
-    if (updatedExpiresIn < 0) {
-      updatedBenefit = this.updateBenefit(updatedBenefit);
-    }
-
-    return new HerbalTea(this.name, updatedExpiresIn, updatedBenefit);
+    return benefit.add(1);
   }
 }

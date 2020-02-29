@@ -1,30 +1,27 @@
 import DrugFactory from "./DrugFactory";
+import Benefit from "./misc/Benefit";
 
 export default class Drug {
   constructor(name, expiresIn, benefit) {
     this.name = name;
     this.expiresIn = expiresIn;
-    this.benefit = benefit;
+    this.benefit = new Benefit(benefit);
   }
 
   updateExpiresIn(expiresIn) {
     return expiresIn - 1;
   }
 
-  updateBenefit(benefit) {
-    if (benefit > 0) {
-      return benefit - 1;
+  updateBenefit(benefit, expiresIn) {
+    if (expiresIn < 0) {
+      return benefit.add(-2);
     }
-    return benefit;
+    return benefit.add(-1);
   }
 
-  updateBenefitValue() {
+  updateForNextDay() {
     const updatedExpiresIn = this.updateExpiresIn(this.expiresIn);
-    let updatedBenefit = this.updateBenefit(this.benefit);
-    if (updatedExpiresIn < 0) {
-      updatedBenefit = this.updateBenefit(updatedBenefit);
-    }
-
+    const updatedBenefit = this.updateBenefit(this.benefit, updatedExpiresIn);
     return new DrugFactory(this.name, updatedExpiresIn, updatedBenefit);
   }
 }
