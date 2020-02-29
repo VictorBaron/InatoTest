@@ -6,6 +6,7 @@ describe("Pharmacy", () => {
   it("empty drugs list should return an empty list", () => {
     expect(new Pharmacy([]).updateBenefitValue()).toEqual([]);
   });
+
   describe("Classic drug", () => {
     it("should decrease the benefit and expiresIn", () => {
       expect(
