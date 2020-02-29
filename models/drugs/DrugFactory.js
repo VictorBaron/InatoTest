@@ -2,6 +2,7 @@ import Drug from "./Drug";
 import HerbalTea from "./HerbalTea";
 import MagicPill from "./MagicPill";
 import Fervex from "./Fervex";
+import Dafalgan from "./Dafalgan";
 import * as drugs from "./drugsList";
 
 export default class DrugFactory {
@@ -13,6 +14,8 @@ export default class DrugFactory {
         return new MagicPill(name, ...args);
       case drugs.FERVEX:
         return new Fervex(name, ...args);
+      case drugs.DAFALGAN:
+        return new Dafalgan(name, ...args);
       default:
         return new Drug(name, ...args);
     }

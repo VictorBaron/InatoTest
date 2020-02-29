@@ -1,12 +1,7 @@
 import Drug from "./Drug";
-import { FERVEX } from "./drugsList";
 
 export default class Fervex extends Drug {
-  constructor(name, expiresIn, benefit) {
-    super(FERVEX, expiresIn, benefit);
-  }
-
-  updateBenefit(benefit, expiresIn) {
+  updateBenefitValue(benefit, expiresIn) {
     if (expiresIn < 0) {
       return 0;
     }

@@ -1,10 +1,10 @@
 import Drug from "./Drug";
 
-export default class HerbalTea extends Drug {
+export default class Dafalgan extends Drug {
   updateBenefitValue(benefit, expiresIn) {
     if (expiresIn < 0) {
-      return benefit.add(2);
+      return benefit.add(-4);
     }
-    return benefit.add(1);
+    return benefit.add(-2);
   }
 }

@@ -12,7 +12,7 @@ export default class Drug {
     return expiresIn - 1;
   }
 
-  updateBenefit(benefit, expiresIn) {
+  updateBenefitValue(benefit, expiresIn) {
     if (expiresIn < 0) {
       return benefit.add(-2);
     }
@@ -21,7 +21,10 @@ export default class Drug {
 
   updateForNextDay() {
     const updatedExpiresIn = this.updateExpiresIn(this.expiresIn);
-    const updatedBenefit = this.updateBenefit(this.benefit, updatedExpiresIn);
+    const updatedBenefit = this.updateBenefitValue(
+      this.benefit,
+      updatedExpiresIn
+    );
     return new DrugFactory(this.name, updatedExpiresIn, updatedBenefit);
   }
 }

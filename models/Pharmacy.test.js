@@ -14,6 +14,12 @@ describe("Pharmacy", () => {
       ).toEqual([new DrugFactory("test", 0, 2)]);
     });
 
+    it("should decrease expiresIn, benefit should not go under 0", () => {
+      expect(
+        new Pharmacy([new DrugFactory("test", 1, 0)]).updateBenefitValue()
+      ).toEqual([new DrugFactory("test", 0, 0)]);
+    });
+
     describe("Expired", () => {
       it("should decrease the benefit twice and expiresIn", () => {
         expect(
@@ -103,13 +109,48 @@ describe("Pharmacy", () => {
         ).toEqual([new DrugFactory(drugs.FERVEX, 1, 50)]);
       });
     });
-    describe("expired", () => {
+    describe("Expired", () => {
       it("should decrease expiresIn and drop benefit to 0", () => {
         expect(
           new Pharmacy([
             new DrugFactory(drugs.FERVEX, 0, 3)
           ]).updateBenefitValue()
         ).toEqual([new DrugFactory(drugs.FERVEX, -1, 0)]);
+      });
+    });
+  });
+
+  describe(drugs.DAFALGAN, () => {
+    it("should decrease the benefit twice and expiresIn once", () => {
+      expect(
+        new Pharmacy([
+          new DrugFactory(drugs.DAFALGAN, 1, 3)
+        ]).updateBenefitValue()
+      ).toEqual([new DrugFactory(drugs.DAFALGAN, 0, 1)]);
+    });
+
+    it("should decrease expiresIn, benefit should not go under 0", () => {
+      expect(
+        new Pharmacy([
+          new DrugFactory(drugs.DAFALGAN, 3, 1)
+        ]).updateBenefitValue()
+      ).toEqual([new DrugFactory(drugs.DAFALGAN, 2, 0)]);
+    });
+
+    describe("Expired", () => {
+      it("should decrease expiresIn, benefit should decrease by 4", () => {
+        expect(
+          new Pharmacy([
+            new DrugFactory(drugs.DAFALGAN, 0, 5)
+          ]).updateBenefitValue()
+        ).toEqual([new DrugFactory(drugs.DAFALGAN, -1, 1)]);
+      });
+      it("should decrease expiresIn, benefit should not go under 0", () => {
+        expect(
+          new Pharmacy([
+            new DrugFactory(drugs.DAFALGAN, 0, 3)
+          ]).updateBenefitValue()
+        ).toEqual([new DrugFactory(drugs.DAFALGAN, -1, 0)]);
       });
     });
   });
